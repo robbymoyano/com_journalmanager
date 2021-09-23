@@ -34,4 +34,20 @@ public class ConsultasController {
 		}
 
 	}
+
+	@GetMapping(value = "/locals", produces = { "application/json" })
+	public ResponseEntity<Object> getLocals() {
+		try {
+			List<String> transactions = service.getAllLocals();
+			return new ResponseEntity<Object>(transactions, HttpStatus.OK);
+		} catch (Exception e) {
+
+			MessageResponse message = new MessageResponse();
+			message.setStatus(500);
+			message.setError(e.getMessage());
+			message.setPath("/locals");
+			return new ResponseEntity<Object>(message, HttpStatus.INTERNAL_SERVER_ERROR);
+		}
+
+	}
 }

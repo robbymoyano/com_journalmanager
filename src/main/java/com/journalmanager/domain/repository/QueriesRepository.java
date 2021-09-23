@@ -14,4 +14,8 @@ public interface QueriesRepository {
 			+ "cod_doc as trxType, num_order as orderNumber, q_amount as totalAmount, num_folio as foliumDocumentId, cod_status as status, txt_body as body \r\n"
 			+ "from pos_transactions pt ;")
 	public List<Transaction> getAllTransactions();
+
+	@Select("select distinct cod_store as storeCode \r\n"
+			+ "FROM fal_pos_journal.pos_transactions;")
+	public List<String> getAllLocals();
 }
