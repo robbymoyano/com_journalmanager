@@ -3,11 +3,13 @@ package com.journalmanager.usecase;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import com.journalmanager.domain.RequestJournal;
 import com.journalmanager.domain.Transaction;
 import com.journalmanager.domain.repository.CommandRepository;
 
+@Service
 public class CommandService {
 
 	@Autowired
