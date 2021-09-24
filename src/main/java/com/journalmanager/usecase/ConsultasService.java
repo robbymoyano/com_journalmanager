@@ -3,6 +3,7 @@ package com.journalmanager.usecase;
 import java.util.List;
 
 import com.journalmanager.domain.Transaction;
+import com.journalmanager.domain.TransactionFilter;
 import com.journalmanager.domain.repository.QueriesRepository;
 
 import org.slf4j.Logger;
@@ -23,9 +24,18 @@ public class ConsultasService {
 		return repo.getAllTransactions();
 	}
 
+	public List<Transaction> getTransactionsFilter(TransactionFilter t) {
+		log.info("Consultado las transacciones por fecha");
+		return repo.getTransactionsFilter(t);
+	}
+
 	public List<String> getAllLocals() {
 		log.info("Consultado todos los locales");
 		return repo.getAllLocals();
 	}
 
+	public List<String> getAllTerminals() {
+		log.info("Consultado todas las terminales");
+		return repo.getAllTerminals();
+	}
 }
