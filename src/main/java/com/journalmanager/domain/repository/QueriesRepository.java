@@ -21,6 +21,7 @@ public interface QueriesRepository {
 			+ "from pos_transactions pt  \r\n"
 			+ "where dt_entry = #{date} \r\n"
 			+ "and (cod_store = #{storeCode} or #{storeCode} IS null) \r\n"
+			+ "and (cod_doc = #{orderNumber} or #{orderNumber} IS null) \r\n"
 			+ "and (cod_ter = #{terminalCode} or #{terminalCode} IS null);")
 	public List<Transaction> getTransactionsFilter(TransactionFilter t);
 

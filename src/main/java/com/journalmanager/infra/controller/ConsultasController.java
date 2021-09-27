@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -37,8 +38,8 @@ public class ConsultasController {
 
 	}
 
-	@GetMapping(value = "/transactions2", produces = { "application/json" })
-	public ResponseEntity<Object> getTransactionsFilter(@RequestBody TransactionFilter transactionFilter) {
+	@PostMapping(value = "/transactionsFilter", produces = { "application/json" })
+	public ResponseEntity<Object> getTransactionsFilter2(@RequestBody TransactionFilter transactionFilter) {
 		try {
 			List<Transaction> transactions = service.getTransactionsFilter(transactionFilter);
 			return new ResponseEntity<Object>(transactions, HttpStatus.OK);
@@ -47,7 +48,7 @@ public class ConsultasController {
 			MessageResponse message = new MessageResponse();
 			message.setStatus(500);
 			message.setError(e.getMessage());
-			message.setPath("/transactions2");
+			message.setPath("/transactionsFilter");
 			return new ResponseEntity<Object>(message, HttpStatus.INTERNAL_SERVER_ERROR);
 		}
 
