@@ -26,10 +26,10 @@ public interface QueriesRepository {
 	public List<Transaction> getTransactionsFilter(TransactionFilter t);
 
 	@Select("select distinct cod_store as storeCode \r\n"
-			+ "FROM fal_pos_journal.pos_transactions;")
+			+ "FROM pos_transactions;")
 	public List<String> getAllLocals();
 
 	@Select("select distinct cod_ter as terminalCode \r\n"
-			+ "FROM fal_pos_journal.pos_transactions;")
+			+ "FROM pos_transactions;")
 	public List<String> getAllTerminals();
 }
