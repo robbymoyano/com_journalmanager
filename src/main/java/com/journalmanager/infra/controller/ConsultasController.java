@@ -38,21 +38,6 @@ public class ConsultasController {
 
 	}
 
-	@PostMapping(value = "/transactionsFilter", produces = { "application/json" })
-	public ResponseEntity<Object> getTransactionsFilter2(@RequestBody TransactionFilter transactionFilter) {
-		try {
-			List<Transaction> transactions = service.getTransactionsFilter(transactionFilter);
-			return new ResponseEntity<Object>(transactions, HttpStatus.OK);
-		} catch (Exception e) {
-
-			MessageResponse message = new MessageResponse();
-			message.setStatus(500);
-			message.setError(e.getMessage());
-			message.setPath("/transactionsFilter");
-			return new ResponseEntity<Object>(message, HttpStatus.INTERNAL_SERVER_ERROR);
-		}
-
-	}
 
 	@GetMapping(value = "/locals", produces = { "application/json" })
 	public ResponseEntity<Object> getLocals() {
